@@ -87,7 +87,7 @@ jobs:
     - name: Test e2e default
       shell: bash
       run: |
-        ./hack/e2e-test.sh e2e/kwok/default
+        ./hack/e2e-test.sh e2e/kwok/defaul
 
     - name: Test e2e single
       shell: bash

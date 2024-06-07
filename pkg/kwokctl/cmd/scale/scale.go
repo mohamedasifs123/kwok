@@ -108,7 +108,7 @@ func runE(ctx context.Context, flags *flagpole, args []string) error {
 			resourceData = resource.DefaultNode
 		}
 
-		logger.Info("No resource found, use default resource", "resource", resourceKind)
+		logger.Info("No resourc    e found, use default resource", "resource", resourceKind)
 		krc, err = config.UnmarshalWithType[*internalversion.KwokctlResource](resourceData)
 		if err != nil {
 			return err
@@ -119,7 +119,16 @@ func runE(ctx context.Context, flags *flagpole, args []string) error {
 	if err != nil {
 		return err
 	}
-
+   a:=scale.Config{
+	Parameters:   parameters,
+	Template:     krc.Template,
+	Name:         resourceName,
+	Namespace:    flags.Namespace,
+	Replicas:     int(flags.Replicas),
+	SerialLength: flags.SerialLength,
+	DryRun:       dryrun.DryRun,
+ }
+ fmt.Printf("scale.Config: %+v\n", a)
 	err = scale.Scale(ctx, clientset, scale.Config{
 		Parameters:   parameters,
 		Template:     krc.Template,
